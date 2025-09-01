@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Transaction</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0d10; --panel: #12161b; --muted: #97a3b6; --txt: #e9eef6; --accent: #66e0c2; --danger: #ff6464; --ok: #4cd97b; --chip: #1b222b;
+      --border: #1e252d; --yellow: #ffb020; --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    * { box-sizing: border-box }
+    body {
+      margin: 0;
+      background: radial-gradient(1200px 600px at 20% -10%, #0e141c 0%, #0b0d10 40%, #090b0f 100%);
+      color: var(--txt);
+      font: 14px/1.5 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif
+    }
+    .wrap { max-width: 980px; margin: 32px auto; padding: 0 16px }
+    .card {
+      position: relative;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .title {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 24px;
+      padding: 24px;
+    }
+    .panel {
+      background: var(--chip);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .section-title {
+      font-weight: 700;
+      opacity: .9;
+      margin: 0 0 10px 0;
+    }
+    .kv {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 10px 12px;
+    }
+    .kv label { color: var(--muted) }
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace
+    }
+    .hash {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #0f141a;
+      color: var(--muted);
+    }
+    .chip svg {
+      width: 14px;
+      height: 14px;
+      display: inline-block;
+    }
+    .status.ok { color: var(--ok) }
+    .status.fail { color: var(--danger) }
+    .muted { color: var(--muted) }
+    .copy {
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: #121820;
+      border-radius: 8px;
+      padding: 6px 10px;
+    }
+    .copy:hover { background: #0f141a }
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 18px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+    a.btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      background: #0f141a;
+      padding: 8px 12px;
+      border-radius: 10px;
+      color: var(--txt);
+    }
+    a.btn[aria-disabled="true"] {
+      opacity: .5;
+      pointer-events: none;
+    }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="head">
+        <div class="title">Transaction</div>
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <h3 class="section-title">Overview</h3>
+          <div class="kv">
+            <label>From</label>
+            <div class="mono">0x9u51ds9880k8r976gbg9998714hh</div>
+            <label>Interacted Contract</label>
+            <div class="mono">0x3dc380589cef419936986f736dfceab1ba8a1764</div>
+            <label>Transaction ID</label>
+            <div class="hash mono">
+              <span>0x5f8c1a3d9e47b2f08d6a1c4e2b9f7d0c6a4e9f2b8c7d1a3e5f9b0c2d4a6e8f7b</span>
+            </div>
+            <label>Value</label>
+            <div>1600 USDT</div>
+            <label>Transaction Fee</label>
+            <div>0.001 ETH</div>
+            <label>Network</label>
+            <div>
+              <span class="chip">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M12 2L5 12l7-4 7 4-7-10z" fill="currentColor" opacity=".9"/>
+                  <path d="M12 22l7-10-7 4-7-4 7 10z" fill="currentColor" opacity=".6"/>
+                </svg>
+                Ethereum Mainnet
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3 class="section-title">Transaction Details</h3>
+          <div class="kv">
+            <label>Status</label>
+            <div class="status ok">Success</div>
+            <label>Timestamp</label>
+            <div>Sep 1, 2025 at 5:21 pm</div>
+            <label>Block Number</label>
+            <div class="mono">34941869</div>
+            <label>Block Hash</label>
+            <div class="mono">0xa4bf...2fca2e</div>
+            <label>Method Id</label>
+            <div class="mono">0xa64dfa75</div>
+            <label>Gas Price</label>
+            <div class="mono">1117785</div>
+            <label>Gas Used</label>
+            <div class="mono">144207</div>
+            <label>Nonce</label>
+            <div class="mono">276</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <a class="btn" aria-disabled="true" href="#">View on Etherscan</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
